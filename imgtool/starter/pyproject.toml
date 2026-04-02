@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "imgtool"
+version = "1.0.0"
+description = "A read-only CLI tool that inspects image files in a directory"
+requires-python = ">=3.12"
+
+[project.scripts]
+imgtool = "imgtool.cli:main"

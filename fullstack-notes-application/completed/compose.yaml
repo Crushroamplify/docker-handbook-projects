@@ -1,0 +1,56 @@
+services:
+  db:
+    image: postgres:16
+    container_name: notes-db-dev
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: notesdb
+      POSTGRES_PASSWORD: secret
+    networks:
+      - backend
+
+  api:
+    build: ./api
+    container_name: notes-api-dev
+    environment:
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_USER: postgres
+      DB_DATABASE: notesdb
+      DB_PASSWORD: secret
+    depends_on:
+      - db
+    networks:
+      - backend
+
+  client:
+    build: ./client
+    container_name: notes-client-dev
+    networks:
+      - frontend
+
+  nginx:
+    build: ./nginx
+    container_name: notes-router-dev
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+      - client
+    networks:
+      - backend
+      - frontend
+
+volumes:
+  db-data:
+    name: notes-db-dev-data
+
+networks:
+  frontend:
+    name: fullstack-notes-network-frontend
+    driver: bridge
+  backend:
+    name: fullstack-notes-network-backend
+    driver: bridge

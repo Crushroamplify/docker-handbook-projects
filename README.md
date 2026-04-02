@@ -2,21 +2,29 @@
 
 ![...](./docker-handbook-github.png)
 
-| :bell: NOTIFICATION |
-|:--------------------|
-| There are two branches in this repository. The [master](https://github.com/fhsinchy/docker-handbook-projects/tree/master/) branch contains the starter projects and the [completed](https://github.com/fhsinchy/docker-handbook-projects/tree/completed/) branch contains the completed projects. |
+## Repository Layout
 
-This repository holds the code for my [__Docker Handbook__](https://www.freecodecamp.org/news/the-docker-handbook/) article on [__freeCodecamp__](https://freecodecamp.org). In the article the readers work through __six__ projects with increasing complexity. These projects are as follows:
+This repository now uses a single branch. Each project contains its own `starter/` and `completed/` directories. Older references to the `completed` branch now map to project-local `completed/` paths.
 
-- custom-nginx - A custom NGINX image based on the official [alpine](https://hub.docker.com/_/alpine/) image.
-- rmbyext - An executable image project.
-- hello-dock - A single container Vue application.
-- notes-api - A multi container Express API.
-- fullstack-notes-application - A full-stack CRUD application with [nginx](https://hub.docker.com/_/nginx/) as a reverse proxy.
+## Projects
+
+- **hello-dock** — A React + Vite frontend application used throughout the handbook
+- **imgtool** — A Python CLI utility container for inspecting image files
+- **notes-api-node** — A Node.js REST API backed by Postgres
+- **notes-api-go** — A compact Go HTTP service
+- **notes-api-python** — A compact Python HTTP service
+- **fullstack-notes-application** — The flagship full-stack notes app with React, Node, Postgres, and NGINX
+- **llm-runtime-demo** — A focused, CPU-first LLM runtime demo
+
+## Retired Projects
+
+- `rmbyext` — Superseded by `imgtool`
+- `custom-nginx` — No longer exists as a standalone project; useful content has been absorbed into handbook chapters and the flagship application
 
 ## Prerequisites
 
-- Familiarity with the Linux Terminal.
-- Familiarity with JavaScript (some of the later projects use JavaScript).
+- Familiarity with the Linux terminal
+- Docker Engine 24 or later
+- Docker Compose v2
 
-It's fine if you haven't worked with JavaScript that much. Having a basic knowledge of executing scripts with `npm` will suffice.
+Language-specific prerequisites are listed in each project README.
